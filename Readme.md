@@ -7,8 +7,8 @@ Welcome to my personal developer portfolio! This website serves as a showcase of
 ## 🚀 Live Demo
 
 Check out the live website here:  
-👉 **[View Live Portfolio](https://<your-username>.github.io/portfolio/)**  
-*(Replace `<your-username>` with your actual GitHub username)*
+👉 **[View Live Portfolio]( https://saurav0903.github.io/saurav-portfolio/)**  
+*(Replace `<saurav0903>` with your actual GitHub username)*
 
 ---
 
@@ -33,6 +33,6 @@ Check out the live website here:
 
 - **Name:** Saurav Sharan
 - **Phone:** +91 9304988708
-- **Email:** [your-email@example.com](mailto:your-email@example.com)
-- **LinkedIn:** [saurav-sharan](https://linkedin.com/in/saurav-sharan)
-- **GitHub:** [sauravsharan](https://github.com/sauravsharan)
+- **Email:** [sauravsharan8081@gmail.com](mailto:sauravsharan8081@gmail.com)
+- **LinkedIn:** [saurav-sharan](www.linkedin.com/in/saurav-sharan-161276215)
+- **GitHub:** [sauravsharan](https://github.com/saurav0903)
