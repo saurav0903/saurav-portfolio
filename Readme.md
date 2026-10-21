@@ -34,5 +34,5 @@ Check out the live website here:
 - **Name:** Saurav Sharan
 - **Phone:** +91 9304988708
 - **Email:** [sauravsharan8081@gmail.com](mailto:sauravsharan8081@gmail.com)
-- **LinkedIn:** [saurav-sharan](www.linkedin.com/in/saurav-sharan-161276215)
+- **LinkedIn:** [www.linkedin.com/in/saurav-sharan-161276215](www.linkedin.com/in/saurav-sharan-161276215)
 - **GitHub:** [sauravsharan](https://github.com/saurav0903)
