@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saurav Sharan | Frontend Web Developer</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================================
+       CSS STYLESHEET (Clean, Structured & Modular)
+       ========================================================== */
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-secondary: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-soft: #cbd5e1;
+      --font-main: 'Inter', sans-serif;
+      --font-code: 'Fira Code', monospace;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Selection & Scrollbar */
+    ::selection {
+      background: var(--accent);
+      color: #000;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    /* Common Layout & Container */
+    .container {
+      width: 90%;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-tag {
+      font-family: var(--font-code);
+      color: var(--accent);
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0b1329;
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: #60a5fa;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(96, 165, 250, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-main);
+      border-color: #334155;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       HEADER & NAVIGATION BAR
+       ========================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 29, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      z-index: 999;
+      padding: 18px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: #fff;
+      font-family: var(--font-code);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================
+       HERO SECTION
+       ========================================================== */
+    .hero {
+      min-height: calc(90vh - 80px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: radial-gradient(circle at 50% 15%, rgba(56, 189, 248, 0.09) 0%, transparent 60%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge i {
+      font-size: 0.75rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #ffffff;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-statement {
+      font-size: 1.15rem;
+      color: var(--text-soft);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .hero-statement em {
+      color: #e2e8f0;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================
+       ABOUT ME SECTION
+       ========================================================== */
+    .about {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 44px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      border-top-left-radius: 18px;
+      border-bottom-left-radius: 18px;
+    }
+
+    .about-card p {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin-bottom: 22px;
+      line-height: 1.8;
+    }
+
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ==========================================================
+       SKILLS SECTION
+       ========================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 26px 20px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.1);
+    }
+
+    .skill-icon {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .skill-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================
+       FEATURED PROJECTS SECTION
+       ========================================================== */
+    .projects {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Stylized Preview Window */
+    .project-preview {
+      height: 200px;
+      background: linear-gradient(135deg, #1e1b4b, #0f172a);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .calc-mockup {
+      width: 140px;
+      background: #090d16;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .calc-screen {
+      background: #020617;
+      color: var(--accent);
+      font-family: var(--font-code);
+      font-size: 13px;
+      text-align: right;
+      padding: 6px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      border: 1px solid #1e293b;
+    }
+
+    .calc-keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+
+    .calc-key {
+      height: 12px;
+      background: #1e293b;
+      border-radius: 3px;
+    }
+
+    .calc-key.accent {
+      background: var(--accent);
+    }
+
+    .project-details {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      font-family: var(--font-code);
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .project-details h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .project-details p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 14px;
+    }
+
+    .project-links .btn {
+      flex: 1;
+      justify-content: center;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+    }
+
+    /* ==========================================================
+       CONTACT SECTION
+       ========================================================== */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 850px;
+      margin: 0 auto;
+      gap: 30px;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .contact-item {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      background: rgba(30, 41, 59, 0.9);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-text span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-info-text strong {
+      font-size: 0.98rem;
+      color: #fff;
+      word-break: break-all;
+    }
+
+    /* ==========================================================
+       FOOTER
+       ========================================================== */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .about-card {
+        padding: 28px;
+      }
+      .hero-actions {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo">Saurav<span>.dev</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary" style="display: none;" id="nav-cta">Let's Talk</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fa-solid fa-code"></i> Frontend Web Developer &bull; Fresher
+          </div>
+          <h1>
+            Hi, I'm <span>Saurav Sharan</span>
+          </h1>
+          <p class="hero-statement">
+            I am passionate about creating modern web pages using <em>HTML & CSS</em>. 
+            I bring a strong creative focus to front-end development because 
+            <em>if a web page does not look attractive and intuitive, no one will use it.</em>
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-laptop-code"></i> View My Projects
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fa-regular fa-envelope"></i> Get In Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">&lt;About /&gt;</span>
+          <h2 class="section-title">Design Philosophy & Drive</h2>
+        </div>
+        <div class="about-card">
+          <p>
+            Hello! My name is <span class="highlight">Saurav Sharan</span>. I am an enthusiastic and motivated 
+            <strong>Frontend Developer</strong> embarking on my journey in web development. 
+            Even as a fresher without corporate work experience, I have dedicated myself to mastering the building blocks 
+            of the web through consistent hands-on project creation.
+          </p>
+          <p>
+            I strongly believe that clean code and exceptional aesthetics go hand in hand. 
+            A user makes their decision about a website in the first 3 seconds — that's why I prioritize responsive design, 
+            pixel-perfect layouts, and aesthetic styling so every project feels fresh, modern, and engaging.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">&lt;Expertise /&gt;</span>
+          <h2 class="section-title">Technical Skillset</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill: HTML5 -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+            <h3>HTML5</h3>
+            <p>Semantic architecture, modern tags & accessibility essentials.</p>
+          </div>
+
+          <!-- Skill: CSS3 -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+            <h3>CSS3 & Styling</h3>
+            <p>Custom styling, animations, modern color schemes & UI depth.</p>
+          </div>
+
+          <!-- Skill: Flexbox -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-table-columns"></i></div>
+            <h3>CSS Flexbox</h3>
+            <p>1D dynamic alignment, structured navigation & fluid components.</p>
+          </div>
+
+          <!-- Skill: CSS Grid -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-border-all"></i></div>
+            <h3>CSS Grid</h3>
+            <p>Complex 2D layouts, card dashboards & asymmetric grids.</p>
+          </div>
+
+          <!-- Skill: Responsive Design -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>Responsive Design</h3>
+            <p>Mobile-first media queries ensuring optimal display on all screens.</p>
+          </div>
+
+          <!-- Skill: Git & GitHub -->
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-brands fa-github"></i></div>
+            <h3>Git & GitHub</h3>
+            <p>Version control, repository management & continuous updates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">&lt;Work /&gt;</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Scientific Calculator -->
+          <div class="project-card">
+            <div class="project-preview">
+              <div class="calc-mockup">
+                <div class="calc-screen">sin(45) = 0.707</div>
+                <div class="calc-keys">
+                  <div class="calc-key accent"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key accent"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key"></div>
+                  <div class="calc-key accent"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-details">
+              <div class="project-tags">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS3</span>
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">CSS Grid</span>
+              </div>
+              <h3>Scientific Calculator</h3>
+              <p>
+                An interactive and clean scientific calculator capable of computing standard arithmetic along with 
+                advanced scientific functions (trigonometric, power, logarithms). Built with precision CSS Grid layout 
+                and tactile key button response.
+              </p>
+              <div class="project-links">
+                <!-- Replace '#' with your actual live demo & repository links -->
+                <a href="https://saurav0903.github.io/scientific-calculator/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <a href="https://github.com/saurav0903" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Responsive Product Showcase -->
+          <div class="project-card">
+            <div class="project-preview" style="background: linear-gradient(135deg, #064e3b, #0f172a);">
+              <i class="fa-solid fa-palette" style="font-size: 3.5rem; color: #34d399; opacity: 0.85;"></i>
+            </div>
+            <div class="project-details">
+              <div class="project-tags">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS3</span>
+                <span class="project-tag">Flexbox</span>
+              </div>
+              <h3>Modern Responsive Web Layout</h3>
+              <p>
+                A sleek, mobile-friendly landing page highlighting aesthetic typography, dark mode color grading, 
+                and seamless responsiveness across desktops, tablets, and smartphones.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/sauravsharan" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <a href="https://github.com/saurav0903" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">&lt;Connect /&gt;</span>
+          <h2 class="section-title">Get In Touch</h2>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <h3 style="font-size: 1.6rem; margin-bottom: 12px; color: #fff;">Let's Build Something Great Together</h3>
+            <p style="color: var(--text-soft); max-width: 580px; margin: 0 auto;">
+              I am actively looking for internship opportunities, entry-level Frontend Developer roles, and freelance projects. 
+              Feel free to call, email, or connect with me via social profiles!
+            </p>
+
+            <div class="contact-grid">
+              <!-- Phone Contact -->
+              <a href="tel:9304988708" class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-info-text">
+                  <span>Call or WhatsApp</span>
+                  <strong>+91 9304988708</strong>
+                </div>
+              </a>
+
+              <!-- Email Contact -->
+              <a href="mailto:sauravsharan8081@gmail.com" class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div class="contact-info-text">
+                  <span>Send an Email</span>
+                  <strong>sauravsharan8081@gmail.com</strong>
+                </div>
+              </a>
+
+              <!-- GitHub Profile -->
+              <a href="https://github.com/saurav0903" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-brands fa-github"></i>
+                </div>
+                <div class="contact-info-text">
+                  <span>GitHub Profile</span>
+                  <strong>github.com/sauravsharan</strong>
+                </div>
+              </a>
+
+              <!-- LinkedIn Profile -->
+              <a href="www.linkedin.com/in/saurav-sharan-161276215" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+                <div class="contact-info-text">
+                  <span>LinkedIn Network</span>
+                  <strong>linkedin.com/in/saurav-sharan</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> <strong>Saurav Sharan</strong>. Built with passion for clean & attractive web pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Automatic copyright year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
